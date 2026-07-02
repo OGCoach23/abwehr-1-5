@@ -1,0 +1,162 @@
+---
+// Collage-Hero im Laimkademie-Look. Hintergrund ist das Übersichtsvideo
+// (dekorativ, stark abgedunkelt). Respektiert prefers-reduced-motion.
+---
+
+<header class="hero" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <video
+      class="hero__video"
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/videos/alles.jpg"
+      data-hero-video
+    >
+      <source src="/videos/alles.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__scrim"></div>
+    <div class="hero__hatch"></div>
+  </div>
+
+  <div class="wrap hero__inner">
+    <p class="kicker"><span>SV Laim Handball</span> · Damen 1 · Trainingslager 2026</p>
+    <div class="hero__headblock brackets">
+      <div class="badge">🛡 Abwehrsystem 1:5</div>
+      <h1 class="hero__title">
+        Nicht stehen.<br />Sondern <span class="hl">aktiv</span> sein.
+      </h1>
+    </div>
+    <p class="hero__sub">
+      Die 1:5 lebt nicht davon, dass wir irgendwo stehen. Sie lebt davon, dass
+      wir anlaufen, stören, helfen, sichern, sprechen – und nach Ballgewinn
+      sofort umschalten.
+    </p>
+    <a href="#bausteine" class="cta">Die Bausteine <span aria-hidden="true">↓</span></a>
+  </div>
+
+  <div class="hero__scrollhint" aria-hidden="true">
+    Scrollen<span>↓</span>
+  </div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--green-darkest);
+    color: var(--bg-cream);
+    padding-block: clamp(5rem, 12vh, 9rem);
+    isolation: isolate;
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+  .hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Weißes Taktik-Board stark abgedunkelt + grün gestimmt für CI */
+    filter: saturate(0.9) contrast(1.05) brightness(0.28) sepia(0.15) hue-rotate(80deg);
+  }
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10, 20, 16, 0.7) 0%, rgba(10, 20, 16, 0.55) 40%, rgba(10, 20, 16, 0.95) 100%),
+      linear-gradient(115deg, rgba(15, 61, 41, 0.9) 0%, rgba(15, 61, 41, 0.1) 55%);
+  }
+  /* Diagonale Schraffur-Textur */
+  .hero__hatch {
+    position: absolute;
+    inset: 0;
+    background: var(--hatch);
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    color: var(--green-mint);
+    margin-bottom: clamp(1.5rem, 5vh, 3rem);
+  }
+  .kicker span {
+    color: var(--bg-cream);
+    font-weight: 600;
+  }
+
+  .hero__headblock {
+    display: inline-block;
+  }
+  .badge {
+    margin-bottom: 1.1rem;
+  }
+  .hero__title {
+    font-size: var(--fs-hero);
+    text-wrap: balance;
+  }
+
+  .hero__sub {
+    margin-top: 1.6rem;
+    max-width: 48ch;
+    font-size: var(--fs-lead);
+    color: var(--green-mint);
+  }
+
+  .cta {
+    margin-top: 2rem;
+  }
+
+  .hero__scrollhint {
+    position: absolute;
+    bottom: 1.4rem;
+    left: 50%;
+    translate: -50% 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--green-mint);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    z-index: 1;
+  }
+  .hero__scrollhint span {
+    animation: bob 1.6s ease-in-out infinite;
+    font-size: 1rem;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+</style>
+
+<script>
+  const v = document.querySelector("[data-hero-video]");
+  if (v instanceof HTMLVideoElement) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      const tryPlay = () => v.play().catch(() => {});
+      if (v.readyState >= 2) tryPlay();
+      else v.addEventListener("loadeddata", tryPlay, { once: true });
+    }
+  }
+</script>

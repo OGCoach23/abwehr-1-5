@@ -1,0 +1,195 @@
+---
+import data from "../data/zuordnung.json";
+---
+
+<div class="zuord" data-zuord>
+  <div class="zuord__filter">
+    <span class="filter__label">Deine Position:</span>
+    <div class="filter__chips" role="group" aria-label="Abwehrposition auswählen">
+      <button class="chip is-active" type="button" data-role="all" aria-pressed="true">Alle</button>
+      {
+        data.rollen.map((r) => (
+          <button class="chip" type="button" data-role={r.id} aria-pressed="false">
+            {r.kuerzel}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="zuord__groups">
+    {
+      data.rollen.map((r) => (
+        <section class="rolle" data-role={r.id}>
+          <header class="rolle__head">
+            <span class="rolle__kuerzel">{r.kuerzel}</span>
+            <span class="rolle__name">{r.name}</span>
+          </header>
+          <div class="rolle__rows">
+            {r.eintraege.map((e) => (
+              <div class="zrow">
+                <span class="zrow__sit">{e.situation}</span>
+                <span class="zrow__act">{e.aktion}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <p class="zuord__foot">🧭 {data.hinweis}</p>
+</div>
+
+<style>
+  .zuord__filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .filter__label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    color: var(--cream-dim);
+  }
+  .filter__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.5em 0.95em;
+    border-radius: var(--radius-badge);
+    border: 1.5px solid var(--cream-line);
+    background: transparent;
+    color: var(--green-dark);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .chip:hover {
+    border-color: var(--green-primary);
+  }
+  .chip.is-active {
+    background: var(--green-primary);
+    border-color: var(--green-primary);
+    color: var(--bg-cream);
+  }
+
+  .zuord__groups {
+    display: grid;
+    gap: 1.1rem;
+  }
+  .rolle {
+    border: 1.5px solid var(--cream-line);
+    border-radius: var(--radius-card);
+    background: #fff;
+    overflow: hidden;
+  }
+  .rolle[hidden] {
+    display: none;
+  }
+  .rolle__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    padding: 0.95rem 1.2rem;
+    background: var(--green-dark);
+    color: var(--bg-cream);
+  }
+  .rolle__kuerzel {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.35rem;
+    letter-spacing: 0.01em;
+    color: var(--green-mint);
+  }
+  .rolle__name {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    color: var(--mint-dim);
+  }
+  .rolle__rows {
+    display: grid;
+  }
+  .zrow {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.9fr) 1.4fr;
+    gap: 0.4rem 1.2rem;
+    align-items: baseline;
+    padding: 0.85rem 1.2rem;
+    border-top: 1px solid var(--cream-line);
+  }
+  .rolle__rows .zrow:first-child {
+    border-top: 0;
+  }
+  .zrow__sit {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.01em;
+    color: var(--green-primary);
+  }
+  .zrow__act {
+    color: var(--green-darkest);
+  }
+  .zuord__foot {
+    margin-top: 1.6rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--cream-dim);
+  }
+
+  @media (max-width: 560px) {
+    .zrow {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector("[data-zuord]");
+  if (root) {
+    const chips = root.querySelectorAll(".chip");
+    const groups = root.querySelectorAll(".rolle");
+    const KEY = "abwehr.role";
+
+    const apply = (role) => {
+      chips.forEach((c) => {
+        const active = c.getAttribute("data-role") === role;
+        c.classList.toggle("is-active", active);
+        c.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      groups.forEach((g) => {
+        const show = role === "all" || g.getAttribute("data-role") === role;
+        g.hidden = !show;
+      });
+    };
+
+    chips.forEach((c) =>
+      c.addEventListener("click", () => {
+        const role = c.getAttribute("data-role") || "all";
+        try { localStorage.setItem(KEY, role); } catch {}
+        apply(role);
+      })
+    );
+
+    let saved = "all";
+    try { saved = localStorage.getItem(KEY) || "all"; } catch {}
+    if (saved !== "all" && root.querySelector(`.chip[data-role="${CSS.escape(saved)}"]`)) {
+      apply(saved);
+    }
+  }
+</script>

@@ -1,0 +1,52 @@
+{
+  "hinweis": "Kürzel Abwehr: AR/AL = Außen rechts/links · HR/HL = Halb rechts/links · VM = Vorne Mitte · HM = Hinten Mitte. Angriff: LA/RA = Außen · RL/RM/RR = Rückraum · KR = Kreis.",
+  "rollen": [
+    {
+      "id": "ar-al",
+      "kuerzel": "AR / AL",
+      "name": "Außen",
+      "eintraege": [
+        { "situation": "LA im Eck", "aktion": "Reinschieben auf 6 m." },
+        { "situation": "LA an der Linie", "aktion": "Nah dran sein und Passweg zustellen." },
+        { "situation": "LA läuft flach ein", "aktion": "Immer mitlaufen. Kommt LA an KR / HM vorbei, wird übergeben." },
+        { "situation": "LA läuft hoch ein", "aktion": "Immer mitlaufen. Situativ mit Halb entscheiden, ob Übergabe möglich ist oder nicht." },
+        { "situation": "LA kreuzt mit RL / RM", "aktion": "Übergeben / übernehmen mit Nebenabwehr." }
+      ]
+    },
+    {
+      "id": "hr-hl",
+      "kuerzel": "HR / HL",
+      "name": "Halb",
+      "eintraege": [
+        { "situation": "RL hat Ball", "aktion": "Zumachen." },
+        { "situation": "RL / RR geht ohne Ball", "aktion": "1 gegen 1 immer mitgehen. Übergabe erst, wenn andere RM / RR mit Abwehr kommt." },
+        { "situation": "RL / RR geht mit Ball", "aktion": "1 gegen 1 zumachen. Je weiter entfernt vom Tor, desto mehr muss RL / RR tippen; Ball raustippen." },
+        { "situation": "RL / RR geht über", "aktion": "Immer mitgehen und Übernahmeregel beachten." },
+        { "situation": "RL / RR kreuzt mit Ball oder leer", "aktion": "Übergeben / übernehmen mit Nebenabwehr." }
+      ]
+    },
+    {
+      "id": "vm",
+      "kuerzel": "VM",
+      "name": "Vorne Mitte",
+      "eintraege": [
+        { "situation": "RM hat Ball", "aktion": "Zumachen." },
+        { "situation": "RM geht ohne Ball", "aktion": "1 gegen 1 immer mitgehen. Übergabe erst, wenn andere RL / RR mit Abwehr kommt." },
+        { "situation": "RM geht mit Ball", "aktion": "1 gegen 1 zumachen. Je weiter entfernt vom Tor, desto mehr muss RM tippen; Ball raustippen." },
+        { "situation": "RM geht über", "aktion": "Immer mitgehen und Übernahmeregel beachten." },
+        { "situation": "RM kreuzt mit Ball oder leer", "aktion": "Übergeben / übernehmen mit Nebenabwehr." }
+      ]
+    },
+    {
+      "id": "hm",
+      "kuerzel": "HM",
+      "name": "Hinten Mitte",
+      "eintraege": [
+        { "situation": "KR auf 6 m", "aktion": "Begleiten und Passwege abschirmen — egal ob Ballseite oder nicht." },
+        { "situation": "KR geht raus", "aktion": "Immer begleiten, maximal bis zur vorderen Reihe, bis zur Übergabe." },
+        { "situation": "KR geht in Sperre", "aktion": "Immer mitgehen, maximal bis zur vorderen Reihe; Regeln beachten." },
+        { "situation": "RM / RR / RL / LA / RA bricht durch", "aktion": "Situativ aushelfen." }
+      ]
+    }
+  ]
+}

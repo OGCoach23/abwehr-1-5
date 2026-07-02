@@ -1,0 +1,59 @@
+/* ============================================================
+   Laimkademie Design Tokens — abgeleitet aus dem Style-Guide-PDF
+   ============================================================ */
+:root {
+  /* ---- Farben ---- */
+  --bg-cream: #f4f2ea;       /* Haupt-Hintergrund + Text auf Dunkel */
+  --green-dark: #0f3d29;     /* Karten, Sektionsbänder, Footer */
+  --green-darkest: #0a1410;  /* fast schwarze Flächen, Badges */
+  --green-primary: #1b7d4a;  /* Hauptakzent: Zahlen, Headline-Akzente, CTA */
+  --green-mid: #3fa56f;      /* helle Diagonalen, Akzentband */
+  --green-mint: #a8d5bc;     /* Body-Text auf Dunkel, Sub-Labels */
+  --warn: #ffd400;           /* sparsamer Signal-Akzent */
+  --red: #e2231a;            /* Negativ-/No-Go-Markierung */
+
+  /* abgeleitete Töne */
+  --ink: #0a1410;
+  --cream-dim: rgba(15, 61, 41, 0.62);   /* gedämpfter Text auf creme */
+  --cream-line: rgba(15, 61, 41, 0.16);  /* Hairlines auf creme */
+  --mint-dim: rgba(168, 213, 188, 0.72); /* gedämpfter Text auf dunkel */
+
+  /* ---- Fonts ---- */
+  --font-display: "Big Shoulders Display Variable", "Big Shoulders Display", system-ui, sans-serif;
+  --font-body: "Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, monospace;
+
+  /* ---- Typescale (fluid) ---- */
+  --fs-hero: clamp(3.4rem, 13vw, 9rem);
+  --fs-h1: clamp(2.4rem, 7vw, 4.6rem);
+  --fs-h2: clamp(1.9rem, 5vw, 3.1rem);
+  --fs-mega: clamp(4rem, 16vw, 9rem);     /* Stat-Zahlen */
+  --fs-h3: clamp(1.2rem, 2.6vw, 1.5rem);
+  --fs-lead: clamp(1.05rem, 2.2vw, 1.3rem);
+  --fs-body: 1.0625rem;
+  --fs-label: 0.78rem;
+
+  --lh-display: 0.92;
+  --lh-body: 1.55;
+  --tracking-label: 0.16em;
+  --tracking-display: -0.01em;
+
+  /* ---- Spacing / Form ---- */
+  --maxw: 1080px;
+  --maxw-text: 720px;
+  --radius-card: 6px;
+  --radius-badge: 999px;
+  --section-pad-y: clamp(3.5rem, 9vw, 7.5rem);
+  --gap-grid: clamp(1rem, 3vw, 1.75rem);
+  --pad-x: clamp(1.25rem, 5vw, 2.5rem);
+
+  --shadow: 0 10px 30px rgba(10, 20, 16, 0.12);
+  --shadow-lg: 0 24px 60px rgba(10, 20, 16, 0.22);
+
+  /* Diagonal-Schraffur für dunkle Karten */
+  --hatch: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.045) 0 2px,
+    transparent 2px 8px
+  );
+}

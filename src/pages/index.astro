@@ -1,0 +1,359 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import StepVideo from "../components/StepVideo.astro";
+import Zuordnung from "../components/Zuordnung.astro";
+import QrPrint from "../components/QrPrint.astro";
+
+const nogos = [
+  "keine lange Taktikvorlesung",
+  "keine Detaildiskussion über jede Variante",
+  "keine komplette Spielsystem-Schulung",
+  "keine Überladung vor der Halleneinheit",
+  "keine Theorie ohne anschließenden Praxisauftrag",
+];
+
+const regeln = [
+  {
+    titel: "Laut kommunizieren",
+    text: "Jede Bewegung wird angesagt; Nebenleute reden für Übergabe, Sperre, Einläufer und Übernahme.",
+  },
+  {
+    titel: "Ballführende zumachen",
+    text: "Grundsätzlich wird die Ballführerin zugemacht. Geht sie tippenderweise vorbei, Ball raustippen, wenn weiter als 9 m vom Tor – ansonsten zumachen.",
+  },
+  {
+    titel: "1 gegen 1 ohne Ball mitgehen",
+    text: "Laufwege werden begleitet; Übergabe erst, wenn eine Mitspielerin mit Abwehr wirklich übernimmt.",
+  },
+  {
+    titel: "Einläufer / Übergang begleiten",
+    text: "Immer mitgehen. Kommt eine Angreiferin in einen Raum mit bereits einer Angreiferin und einer Abwehrspielerin, wird übergeben.",
+  },
+  {
+    titel: "Kreuzen heißt nicht Räume tauschen",
+    text: "Beim Kreuzen tauschen die Angreiferinnen den Platz – die Abwehr bleibt in ihren Räumen. Bei Kreuz mit Ball läuft die Ballführerin nicht einfach durch.",
+  },
+  {
+    titel: "Sperren sauber übergeben",
+    text: "Die Gegenspielerin rutscht immer nach hinten; jede erkennt nur rechts / links und übernimmt in ihrem Raum. Wechselt die Angreiferin den Raum: „Switch!“ rufen und tauschen.",
+  },
+  {
+    titel: "Aushelfen nur klar und situativ",
+    text: "Die nächste Abwehrspielerin hilft, wenn erkennbar ist, dass eine Nebensituation entstehen kann.",
+  },
+  {
+    titel: "Sonderaktionen sofort stoppen",
+    text: "Kommen mehrere gleichzeitig: sofort zumachen und Spiel notfalls unterbrechen. Kommunikation hat Vorrang.",
+  },
+];
+---
+
+<Base>
+  <Hero />
+
+  <!-- 01 · Grundidee -->
+  <section class="section section--dark" id="grundidee">
+    <div class="wrap reveal">
+      <p class="eyebrow"><span class="num">01 /</span> Grundidee</p>
+      <h2 class="h-section">1:5 ist <span class="accent">aktiv</span>.</h2>
+      <div class="callout callout--goal">
+        🎯 &nbsp;Viel Energie, viel Laufarbeit, klare Zweikämpfe, frühe Störung
+        und schnelles Umschalten.
+      </div>
+
+      <div class="nogo">
+        <p class="nogo__label">Im Workshop soll <strong>nicht</strong> passieren:</p>
+        <ul class="nogo__list">
+          {nogos.map((n) => <li>{n}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · Die Regeln -->
+  <section class="section section--cream" id="regeln">
+    <div class="wrap reveal">
+      <p class="eyebrow"><span class="num">02 /</span> Unsere Regeln &amp; Rollen</p>
+      <h2 class="h-section">Acht Regeln,<br />an die wir uns halten.</h2>
+      <div class="callout callout--rule">
+        🧭 &nbsp;Jede Bewegung der Angreiferinnen wird laut angesagt. Übergaben
+        passieren nur bewusst: mit Kommunikation, Übernahme durch die Nebenabwehr
+        und klarer Zuständigkeit. Kommen mehrere Sonderaktionen gleichzeitig, wird
+        sofort zugemacht und das Spiel notfalls unterbrochen.
+      </div>
+
+      <ol class="rules">
+        {
+          regeln.map((r, i) => (
+            <li class="rule">
+              <span class="rule__num">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 class="rule__title">{r.titel}</h3>
+                <p class="rule__text">{r.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 · Die Bausteine (Videos) -->
+  <section class="section section--darkest" id="bausteine">
+    <div class="wrap reveal">
+      <p class="eyebrow"><span class="num">03 /</span> Die Bausteine</p>
+      <h2 class="h-section">Sechs Clips,<br />ein System.</h2>
+      <p class="lead">
+        Jeder Baustein zeigt eine Situation aus der 1:5. Erst schauen, dann in
+        der Halle umsetzen. Tippen zum Abspielen.
+      </p>
+    </div>
+
+    <div class="wrap steps">
+      <StepVideo num={1} title="Grundbewegung" video="grundbewegung" orient="portrait" caption="1:5 Grundbewegung" tip="Das Fundament: nie passiv stehen bleiben.">
+        Viel Energie in Laufwege und Zweikämpfe. Aktiv anlaufen, stören, helfen,
+        sichern – die Grundbewegung ist die Basis für alles Weitere.
+      </StepVideo>
+
+      <StepVideo num={2} title="Einläufer" video="einlaeufer" orient="portrait" caption="1:5 Einläufer" tip="Merke: Einläufer werden nicht überrascht entdeckt, sondern früh angekündigt.">
+        Früh ansagen: „Einläufer!“ Startposition und Zielraum erkennen. Außen /
+        Halb begleitet, bis die Übergabe klar ist. Die Mitte nimmt nur auf, wenn
+        Kommunikation und Position passen. Kreis und Einläufer dürfen nie
+        gleichzeitig frei werden.
+      </StepVideo>
+
+      <StepVideo num={3} title="Kreuzen" video="kreuzen" orient="portrait" caption="1:5 Kreuzen" tip="Räume nicht tauschen – die Angreiferinnen tauschen, wir bleiben.">
+        Früh ansagen. Die Ballführende unter Druck halten. Nicht beide
+        Verteidigerinnen auf denselben Laufweg reinfallen. Übergabe nur, wenn sie
+        wirklich klar ist.
+      </StepVideo>
+
+      <StepVideo num={4} title="Sperre" video="sperre" orient="portrait" caption="1:5 Sperre" tip="Wechselt die Angreiferin den Raum: „Switch!“ rufen.">
+        Früh ansagen: „Sperre links / rechts!“ HM geht immer mit dazu. Die
+        gesperrte Spielerin sinkt hinter die Sperre. Jede hat ihren Raum – viel
+        Kommunikation, vor allem beim Switch.
+      </StepVideo>
+
+      <StepVideo num={5} title="Übergang / Zwei Kreis" video="uebergang" orient="portrait" caption="1:5 Übergang" tip="Immer mitgehen – Übernahmeregel beachten.">
+        Sofort ansagen: „Übergang!“, „Zwei Kreis!“ oder „Einläufer!“. Die
+        Abwehrspielerin geht immer mit. Übergabe beim Kreisspieler.
+      </StepVideo>
+
+      <StepVideo num={6} title="Alles zusammen" video="alles" orient="portrait" caption="1:5 Gesamtablauf" tip="Sperre, Einläufer und Übergang im Zusammenspiel.">
+        Der Gesamtablauf: So greifen Grundbewegung, Sperre, Einläufer und Übergang
+        ineinander – ein durchgehender Angriff gegen die aktive 1:5.
+      </StepVideo>
+    </div>
+  </section>
+
+  <!-- 04 · Zuordnung -->
+  <section class="section section--cream" id="zuordnung">
+    <div class="wrap reveal">
+      <p class="eyebrow"><span class="num">04 /</span> Zuordnung</p>
+      <h2 class="h-section">Wer macht was,<br />in welcher Situation?</h2>
+      <p class="lead measure">
+        Filter nach deiner Position – dann siehst du nur deine Aufgaben. Ohne
+        Filter das komplette Regelwerk aller Rollen.
+      </p>
+      <div class="zuord-wrap">
+        <Zuordnung />
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · Kommunikation -->
+  <section class="section section--dark" id="kommunikation">
+    <div class="wrap reveal komm">
+      <p class="eyebrow"><span class="num">05 /</span> Kommunikationsregel</p>
+      <p class="komm__stat">Früh.<br />Kurz.<br /><span class="accent">Konkret.</span></p>
+      <p class="komm__text">
+        📣 &nbsp;Nicht erklären, sondern <strong>auslösen</strong>. Jedes Kommando
+        ist für die Nebenfrau gedacht.
+      </p>
+    </div>
+  </section>
+
+  <!-- 06 · Merke + Teilen -->
+  <section class="section section--darkest" id="merke">
+    <div class="wrap reveal">
+      <p class="eyebrow"><span class="num">06 /</span> Merke</p>
+      <blockquote class="finale brackets">
+        Unsere 1:5 funktioniert nicht, weil wir sie erklären können. Sie
+        funktioniert, wenn jede Bewegung, jede Hilfe und jedes Kommando für die
+        <span class="hl">Nebenfrau</span> mitgedacht ist.
+      </blockquote>
+
+      <div class="share">
+        <QrPrint />
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>SV Laim Handball · Damen 1</span>
+      <span>1:5 Abwehr · Trainingslager 2026</span>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  /* ---- Callout ---- */
+  .callout {
+    margin-top: 1.6rem;
+    padding: 1.15rem 1.4rem;
+    border-radius: var(--radius-card);
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+    border-left: 4px solid var(--green-primary);
+  }
+  .callout--goal {
+    background: rgba(63, 165, 111, 0.16);
+    color: var(--bg-cream);
+    border-left-color: var(--green-mid);
+  }
+  .callout--rule {
+    background: #fff;
+    color: var(--green-darkest);
+    border-left-color: var(--green-primary);
+    box-shadow: var(--shadow);
+    font-size: var(--fs-body);
+  }
+
+  /* ---- No-Go Liste ---- */
+  .nogo {
+    margin-top: 2.4rem;
+  }
+  .nogo__label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green-mint);
+    margin-bottom: 0.9rem;
+  }
+  .nogo__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+    max-width: var(--maxw-text);
+  }
+  .nogo__list li {
+    position: relative;
+    padding-left: 1.9rem;
+    color: var(--green-mint);
+  }
+  .nogo__list li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  /* ---- Regeln-Grid ---- */
+  .rules {
+    list-style: none;
+    margin: 2.4rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-grid);
+  }
+  .rule {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    background: #fff;
+    border: 1.5px solid var(--cream-line);
+    border-radius: var(--radius-card);
+    padding: 1.2rem 1.35rem;
+  }
+  .rule__num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.1rem;
+    line-height: 0.9;
+    color: var(--green-primary);
+  }
+  .rule__title {
+    font-size: 1.12rem;
+    margin-bottom: 0.35rem;
+  }
+  .rule__text {
+    color: var(--cream-dim);
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  /* ---- Steps ---- */
+  .steps {
+    margin-top: 1.2rem;
+  }
+
+  .zuord-wrap {
+    margin-top: 2rem;
+  }
+
+  /* ---- Kommunikation ---- */
+  .komm__stat {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: var(--fs-mega);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 0.6rem 0 0;
+  }
+  .komm__text {
+    margin-top: 1.6rem;
+    font-size: var(--fs-lead);
+    color: var(--green-mint);
+    max-width: 40ch;
+  }
+
+  /* ---- Finale Quote ---- */
+  .finale {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.7rem, 5vw, 3.2rem);
+    max-width: 20ch;
+    margin: 1.4rem 0 0;
+    color: var(--bg-cream);
+    display: inline-block;
+  }
+  .share {
+    margin-top: clamp(3rem, 8vw, 5rem);
+  }
+
+  /* ---- Footer ---- */
+  .footer {
+    background: var(--green-dark);
+    color: var(--green-mint);
+    padding-block: 2.2rem;
+  }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.6rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 620px) {
+    .rules {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

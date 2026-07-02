@@ -1,0 +1,11 @@
+{
+  "name": "1:5 Abwehr · SV Laim Handball",
+  "short_name": "1:5 Abwehr",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1410",
+  "theme_color": "#0f3d29",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
