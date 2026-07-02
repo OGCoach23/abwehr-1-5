@@ -1,6 +1,6 @@
-# 1:5 Abwehr — SV Laim Handball Damen 1
+# 1:5 Abwehr — SV Laim Handball LaimerFirstLadies
 
-Landingpage/One-Pager zum Abwehrsystem **1:5** (Trainingslager 2026). Fasst
+Landingpage/One-Pager zum Abwehrsystem **1:5** (Saison 2026 / 2027). Fasst
 Grundidee, die 8 Regeln, die Positions-Zuordnung und die 6 Erklärvideos aus dem
 Workshop zusammen. Design im „Laimkademie-Look" (abgeleitet von der Harz-Guide-Seite).
 

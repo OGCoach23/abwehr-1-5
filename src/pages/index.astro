@@ -5,14 +5,6 @@ import StepVideo from "../components/StepVideo.astro";
 import Zuordnung from "../components/Zuordnung.astro";
 import QrPrint from "../components/QrPrint.astro";
 
-const nogos = [
-  "keine lange Taktikvorlesung",
-  "keine Detaildiskussion über jede Variante",
-  "keine komplette Spielsystem-Schulung",
-  "keine Überladung vor der Halleneinheit",
-  "keine Theorie ohne anschließenden Praxisauftrag",
-];
-
 const regeln = [
   {
     titel: "Laut kommunizieren",
@@ -60,13 +52,6 @@ const regeln = [
       <div class="callout callout--goal">
         🎯 &nbsp;Viel Energie, viel Laufarbeit, klare Zweikämpfe, frühe Störung
         und schnelles Umschalten.
-      </div>
-
-      <div class="nogo">
-        <p class="nogo__label">Im Workshop soll <strong>nicht</strong> passieren:</p>
-        <ul class="nogo__list">
-          {nogos.map((n) => <li>{n}</li>)}
-        </ul>
       </div>
     </div>
   </section>
@@ -192,8 +177,8 @@ const regeln = [
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <span>SV Laim Handball · Damen 1</span>
-      <span>1:5 Abwehr · Trainingslager 2026</span>
+      <span>SV Laim Handball · LaimerFirstLadies</span>
+      <span>1:5 Abwehr · Saison 2026 / 2027</span>
     </div>
   </footer>
 </Base>
@@ -219,40 +204,6 @@ const regeln = [
     border-left-color: var(--green-primary);
     box-shadow: var(--shadow);
     font-size: var(--fs-body);
-  }
-
-  /* ---- No-Go Liste ---- */
-  .nogo {
-    margin-top: 2.4rem;
-  }
-  .nogo__label {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--green-mint);
-    margin-bottom: 0.9rem;
-  }
-  .nogo__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.55rem;
-    max-width: var(--maxw-text);
-  }
-  .nogo__list li {
-    position: relative;
-    padding-left: 1.9rem;
-    color: var(--green-mint);
-  }
-  .nogo__list li::before {
-    content: "✕";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--red);
-    font-weight: 700;
   }
 
   /* ---- Regeln-Grid ---- */
