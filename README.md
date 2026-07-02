@@ -50,7 +50,3 @@ einbinden.
 
 `site` (in `astro.config.mjs`) und `FIXED_URL` (in `QrPrint.astro`) zeigen auf
 `https://abwehr-1-5.vercel.app`. Bei eigener Domain an **beiden** Stellen ändern.
-
-## Offen / TODO
-
-- OG-Bild `public/og/abwehr-1-5-og.png` (1200×630) fehlt noch — referenziert in `Base.astro`.
